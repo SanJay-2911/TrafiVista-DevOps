@@ -1,0 +1,18 @@
+services:
+
+  backend:
+    build: ./backend
+    container_name: trafivista-backend
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT}:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: trafivista-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT}:3000"
+    depends_on:
+      - backend
+      
